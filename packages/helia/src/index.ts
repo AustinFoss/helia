@@ -29,6 +29,8 @@ import type { Helia } from '@helia/interface'
 import type { Libp2p } from '@libp2p/interface-libp2p'
 import type { Blockstore } from 'interface-blockstore'
 import type { Datastore } from 'interface-datastore'
+import type { MemoryBlockstore } from 'blockstore-core'
+import type { MemoryDatastore } from 'datastore-core'
 import type { CID } from 'multiformats/cid'
 import type { MultihashHasher } from 'multiformats/hashes/interface'
 import { HeliaImpl } from './helia.js'
@@ -53,12 +55,12 @@ export interface HeliaInit {
   /**
    * The blockstore is where blocks are stored
    */
-  blockstore?: Blockstore
+  blockstore?: Blockstore | MemoryBlockstore
 
   /**
    * The datastore is where data is stored
    */
-  datastore?: Datastore
+  datastore?: Datastore | MemoryDatastore
 
   /**
    * By default sha256, sha512 and identity hashes are supported for
